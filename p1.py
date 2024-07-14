@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-a=float(input("enter a value for a"))
-b=float(input("enter a value for b"))
-c=float(input("enter a value for c"))
+
 def quadratic_model(time):
-      
+  a=float(input("enter a value for a"))
+  b=float(input("enter a value for b"))
+  c=float(input("enter a value for c"))
 
   temperature = a * time**2 + b * time + c
   return temperature
@@ -23,5 +23,5 @@ def main():
       plt.title('Weather Modeling with Quadratic equation ')
 
       plt.show()
-if __name__ == '_main_':
+if __name__ == '__main__':
       main()
