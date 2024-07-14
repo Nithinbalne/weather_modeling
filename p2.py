@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-a=1
+a=0.1
 b=4
 c=3
 x=np.linspace(0.1,10,100)
