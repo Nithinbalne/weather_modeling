@@ -1,22 +1,48 @@
-import numpy as np
+# multiple set of inputs
 import matplotlib.pyplot as plt
+import numpy as np
 
-a=0.2
-b=1
-c=40
-x=np.linspace(1,10,100)
-y=a*x**2 + b*x +c
+def quadratic_model(time, a_list, b_list, c_list):
+    temperatures = []
+    num_sets = 2
 
+    for i in range(num_sets):
+        a = a_list[i]
+        b = b_list[i]
+        c = c_list[i]
+        temperature = a * time**2 + b * time + c
+        temperatures.append(temperature)
 
-q=-0.1
-p=1
-r=20
-w=np.linspace(1,10,100)
-z=q*w**2 + p*w +r
-plt.plot(x,y,c="black",lw=2)
-plt.plot(w,z,c="blue",lw=2)
+    return temperatures
 
-plt.xlabel('time (hr)')
-plt.ylabel('temperature (°C)')
-plt.title('multiple inputs')
-plt.show()
+def main():
+    num_sets = 2
+
+    a_list = []
+    b_list = []
+    c_list = []
+
+    for i in range(num_sets):
+        a = float(input(f"Enter a value for set {i+1}: "))
+        b = float(input(f"Enter b value for set {i+1}: "))
+        c = float(input(f"Enter c value for set {i+1}: "))
+        a_list.append(a)
+        b_list.append(b)
+        c_list.append(c)
+
+    time_values = np.linspace(0, 10, 100)
+    temperatures = quadratic_model(time_values, a_list, b_list, c_list)
+
+    for i in range(num_sets):
+        label = f'Set {i+1} coefficients'
+        plt.plot(time_values, temperatures[i], label=label, marker='*')
+
+    plt.xlabel('Time in hrs')
+    plt.ylabel('Temperature in celsius')
+    plt.legend()
+    plt.title('Weather Modeling with Quadratic Equation (Multiple Sets of Coefficients)')
+
+    plt.show()
+
+if __name__ == '__main__':
+    main()
